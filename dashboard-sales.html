@@ -82,6 +82,18 @@
 
     <div class="card" style="margin-top: 30px">
       <h3>Top Products</h3>
+      <input
+        type="text"
+        id="filterProducts"
+        placeholder="Filter products..."
+        style="
+          width: 100%;
+          padding: 8px;
+          margin: 10px 0;
+          border-radius: 6px;
+          border: 1px solid #ccc;
+        "
+        onkeyup="filterTable('filterProducts','productsTable')" />
       <table>
         <thead>
           <tr>
@@ -116,6 +128,18 @@
     </div>
     <div class="card" style="margin-top: 30px">
       <h3>Sales per Customer</h3>
+      <input
+        type="text"
+        id="filterCustomers"
+        placeholder="Filter customers..."
+        style="
+          width: 100%;
+          padding: 8px;
+          margin: 10px 0;
+          border-radius: 6px;
+          border: 1px solid #ccc;
+        "
+        onkeyup="filterTable('filterCustomers','customerTable')" />
       <table>
         <thead>
           <tr>
@@ -149,4 +173,15 @@
       </table>
     </div>
   </body>
+  <script>
+    function filterTable(inputId, tableBodyId) {
+      const input = document.getElementById(inputId).value.toLowerCase();
+      const rows = document.querySelectorAll(`#${tableBodyId} tr`);
+
+      rows.forEach((row) => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(input) ? "" : "none";
+      });
+    }
+  </script>
 </html>
